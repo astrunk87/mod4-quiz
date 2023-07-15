@@ -1,9 +1,12 @@
 var timeEl = document.querySelector(".time");
 
-var mainEl = document.getElementById("main");
+var mainEl = document.querySelector("main");
 
-var secondsLeft = 20;
+var startGame = document.querySelector("#start");
 
+var secondsLeft = 2;
+
+startGame.addEventListener("click", timer);
 
 function timer () {
     var timerInterval = setInterval(function(){
@@ -12,10 +15,11 @@ function timer () {
 
         if(secondsLeft === 0) {
             clearInterval(timerInterval);
-
+            
             sendMessage();
         }
     }, 1000);
+    
 
 }
 
@@ -23,4 +27,5 @@ function sendMessage() {
     timeEl.textContent = "GAME OVER"
 }
 
-timer();
+
+// timer();

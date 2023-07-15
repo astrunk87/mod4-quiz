@@ -12,7 +12,8 @@ THEN the game is over
 WHEN the game is over
 THEN I can save my initials and score
 
-need timer
+need timer - started
 need score
 need questions
-high scoore
+need high scoore
+need button to start game
