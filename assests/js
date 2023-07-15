@@ -8,7 +8,7 @@ var secondsLeft = 2;
 
 startGame.addEventListener("click", timer);
 
-function timer () {
+function timer (event) {
     var timerInterval = setInterval(function(){
         secondsLeft--;
         timeEl.textContent = secondsLeft + " tell game over";
