@@ -9,18 +9,17 @@ var answer2 = document.querySelector("#answer2");
 var answer3 = document.querySelector("#answer3");
 var answer4 = document.querySelector("#answer4");
 
-// question.children[1].textContent = "css";
-answer1.textContent = "java script";
-answer2.textContent = "css";
-answer3.textContent = "bootstrap";
-answer4.textContent = "html";
 
-question.answer.textContent = "apples";
+// question.textContent = "which answer is a web api?";
+// answer1.textContent = "java script";
+// answer2.textContent = "css";
+// answer3.textContent = "bootstrap";
+// answer4.textContent = "html";
+
+
 
 
 var secondsLeft = 2;
-
-firstchild
 
 startGame.addEventListener("click", timer);
 
@@ -35,6 +34,11 @@ function timer (event) {
             sendMessage();
         }
     }, 1000);
+    question.textContent = "which answer is a web api?";
+    answer1.textContent = "java script";
+    answer2.textContent = "css";
+    answer3.textContent = "bootstrap";
+    answer4.textContent = "html";
     
 
 }
