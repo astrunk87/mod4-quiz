@@ -94,7 +94,8 @@ function timer (event) {
 
     function endGame(){
         if (secondsLeft > 0)
-        secondsLeft = 0;
+        clearInterval(timerInterval);
+        // secondsLeft = 0;
         sendMessage();
 
 
