@@ -8,29 +8,19 @@ var answer1 = document.querySelector("#answer1");
 var answer2 = document.querySelector("#answer2");
 var answer3 = document.querySelector("#answer3");
 var answer4 = document.querySelector("#answer4");
+var score = document.querySelector("#score");
+var player = localStorage.getItem("player");
 
 
 var secondsLeft = 60;
-// function loseTime(){
-//     secondsLeft--;
-//     secondsLeft--;
-//     secondsLeft--;
-//     secondsLeft--;
-//     secondsLeft--;
-// }
 
-// function secondQuestion(){
-//     question.textContent = " what does css stand for?"
-//     answer1.textContent = " creative sheet standard"
-//     answer2.textContent = " casscading style sheet"
-//     answer3.textContent = " casscading standard style"
-//     answer4.textContent = " color style sheet"
-// };
 
 startGame.addEventListener("click", timer);
+   
 
 function timer (event) {
     var timerInterval = setInterval(function(){
+        // firstQuestion();
         secondsLeft--;
         timeEl.textContent = secondsLeft + " tell game over";
 
@@ -46,25 +36,30 @@ function timer (event) {
     function secondQuestion(){
         question.textContent = " what does css stand for?";
         answer1.textContent = " creative sheet standard";
-        answer2.textContent = " casscading style sheet";
-        answer3.textContent = " casscading standard style";
+        answer2.textContent = " casscading standard style";
+        answer3.textContent = " casscading style sheet";        
         answer4.textContent = " color style sheet";
         answer1.addEventListener("click",function(){
             if(secondsLeft > 0){
             loseTime()
+            thirdQuestion()
+            }});
+        answer2.addEventListener("click",function(){
+            if(secondsLeft > 0){
+            loseTime()  
+            thirdQuestion()          
             }});
         answer3.addEventListener("click",function(){
             if(secondsLeft > 0){
-            loseTime()
-            }});
+            thirdQuestion()
+            score.textContent = "10";
+            }});        
         answer4.addEventListener("click",function(){
             if(secondsLeft > 0){
             loseTime()
-            }});   
-        answer2.addEventListener("click",function(){
-            if(secondsLeft > 0){
             thirdQuestion()
-            }}); 
+            }});   
+         
     }
 
     function thirdQuestion() {
@@ -76,18 +71,22 @@ function timer (event) {
         answer2.addEventListener("click",function(){
             if(secondsLeft > 0){
             loseTime()
+            endGame()
             }}); 
         answer3.addEventListener("click",function(){
             if(secondsLeft > 0){
             loseTime()
+            endGame()
             }});
         answer4.addEventListener("click",function(){
             if(secondsLeft > 0){
-            loseTime()
+            
+            endGame()
             }});
         answer1.addEventListener("click",function(){
             if(secondsLeft > 0){
             endGame()
+            score.textContent = "15"
             }});   
 
     }
@@ -97,6 +96,7 @@ function timer (event) {
         clearInterval(timerInterval);
         // secondsLeft = 0;
         sendMessage();
+        
 
 
     }
@@ -107,7 +107,7 @@ function timer (event) {
         secondsLeft--;
         secondsLeft--;
         }
-
+    // function firstQuestion(){
     question.textContent = "which answer is a web api?";
     answer1.textContent = "java script";
     answer2.textContent = "css";
@@ -116,26 +116,34 @@ function timer (event) {
     // this does work
     answer4.addEventListener("click",function(){
         if(secondsLeft > 0){
+        secondQuestion()
         loseTime()
+        
         }});
     answer1.addEventListener("click",function(){
         if(secondsLeft > 0){
+        secondQuestion()
         loseTime()
+        
         }});
     answer2.addEventListener("click",function(){
         if(secondsLeft > 0){
+        secondQuestion()
         loseTime()
+        
         }});
 
     answer3.addEventListener("click",function() {
         if(secondsLeft > 0) {
+        score.textContent = "5";
         secondQuestion()
-        }});    
+        
+        }})};    
         
            
     
 
-}
+// }
 
 function sendMessage() {
     timeEl.textContent = "GAME OVER"
