@@ -10,16 +10,22 @@ var answer3 = document.querySelector("#answer3");
 var answer4 = document.querySelector("#answer4");
 
 
-// question.textContent = "which answer is a web api?";
-// answer1.textContent = "java script";
-// answer2.textContent = "css";
-// answer3.textContent = "bootstrap";
-// answer4.textContent = "html";
+var secondsLeft = 60;
+// function loseTime(){
+//     secondsLeft--;
+//     secondsLeft--;
+//     secondsLeft--;
+//     secondsLeft--;
+//     secondsLeft--;
+// }
 
-
-
-
-var secondsLeft = 2;
+// function secondQuestion(){
+//     question.textContent = " what does css stand for?"
+//     answer1.textContent = " creative sheet standard"
+//     answer2.textContent = " casscading style sheet"
+//     answer3.textContent = " casscading standard style"
+//     answer4.textContent = " color style sheet"
+// };
 
 startGame.addEventListener("click", timer);
 
@@ -28,17 +34,104 @@ function timer (event) {
         secondsLeft--;
         timeEl.textContent = secondsLeft + " tell game over";
 
+        
+
         if(secondsLeft === 0) {
             clearInterval(timerInterval);
             
             sendMessage();
         }
     }, 1000);
+
+    function secondQuestion(){
+        question.textContent = " what does css stand for?";
+        answer1.textContent = " creative sheet standard";
+        answer2.textContent = " casscading style sheet";
+        answer3.textContent = " casscading standard style";
+        answer4.textContent = " color style sheet";
+        answer1.addEventListener("click",function(){
+            if(secondsLeft > 0){
+            loseTime()
+            }});
+        answer3.addEventListener("click",function(){
+            if(secondsLeft > 0){
+            loseTime()
+            }});
+        answer4.addEventListener("click",function(){
+            if(secondsLeft > 0){
+            loseTime()
+            }});   
+        answer2.addEventListener("click",function(){
+            if(secondsLeft > 0){
+            thirdQuestion()
+            }}); 
+    }
+
+    function thirdQuestion() {
+        question.textContent = "what does js stand for?";
+        answer1.textContent = " Java Script";
+        answer2.textContent = " joint style";
+        answer3.textContent = " james script";
+        answer4.textContent = " jelly scone";
+        answer2.addEventListener("click",function(){
+            if(secondsLeft > 0){
+            loseTime()
+            }}); 
+        answer3.addEventListener("click",function(){
+            if(secondsLeft > 0){
+            loseTime()
+            }});
+        answer4.addEventListener("click",function(){
+            if(secondsLeft > 0){
+            loseTime()
+            }});
+        answer1.addEventListener("click",function(){
+            if(secondsLeft > 0){
+            endGame()
+            }});   
+
+    }
+
+    function endGame(){
+        if (secondsLeft > 0)
+        secondsLeft = 0;
+        sendMessage();
+
+
+    }
+
+    function loseTime(){
+        secondsLeft--;
+        secondsLeft--;
+        secondsLeft--;
+        secondsLeft--;
+        }
+
     question.textContent = "which answer is a web api?";
     answer1.textContent = "java script";
     answer2.textContent = "css";
     answer3.textContent = "bootstrap";
     answer4.textContent = "html";
+    // this does work
+    answer4.addEventListener("click",function(){
+        if(secondsLeft > 0){
+        loseTime()
+        }});
+    answer1.addEventListener("click",function(){
+        if(secondsLeft > 0){
+        loseTime()
+        }});
+    answer2.addEventListener("click",function(){
+        if(secondsLeft > 0){
+        loseTime()
+        }});
+
+    answer3.addEventListener("click",function() {
+        if(secondsLeft > 0) {
+        secondQuestion()
+        }});    
+        
+           
     
 
 }
