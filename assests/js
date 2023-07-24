@@ -169,6 +169,13 @@ function timer (event) {
             document.getElementById('player').innerHTML = lastScore.player;
         }
     }
+    function init() {
+        showLastScore();
+      }
+      init();
+
+
+
     saveButton.addEventListener('click', function (event) {
         event.preventDefault();
         saveLastScore();
