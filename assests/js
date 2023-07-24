@@ -62,10 +62,8 @@ function timer (event) {
         }});
 
     answer3.addEventListener("click",function() {
-        if(secondsLeft > 0) {
-        
-        secondQuestion()
-        
+        if(secondsLeft > 0) {        
+        secondQuestion()        
         answerBox.textContent = ("correct!! + 5 points!!");
         addPoints()
         }})};   
@@ -144,17 +142,7 @@ function timer (event) {
 
     } 
 
-//     function makeHighScore(){
-//     var highScore = {
-//         score:score.value,
-//         player:player.value,
-//     };
-//     localStorage.setItem('highScore', JSON.stringify(highScore));
-// }
-//     function showHighscore(){
-//         var lastScore = JSON.parse(localStorage.getItem('player'));
-//         document.getElementById('player').innerHTML = lastScore.player;
-    // }
+
     function saveLastScore() {
         var score = {
             finalScore: finalScore.value,
@@ -183,20 +171,20 @@ function timer (event) {
       });
 
     function addPoints() {
-        scoreEl.textContent = startingScore++;
-        scoreEl.textContent = startingScore++;
-        scoreEl.textContent = startingScore++;
-        scoreEl.textContent = startingScore++;
-        scoreEl.textContent = startingScore++;     
+        scoreEl.textContent = startingScore+5;
+        // scoreEl.textContent = startingScore++;
+        // scoreEl.textContent = startingScore++;
+        // scoreEl.textContent = startingScore++;
+        // scoreEl.textContent = startingScore++;     
     }
-    
+   
 
     function loseTime(){
-        secondsLeft--;
-        secondsLeft--;
-        secondsLeft--;
-        secondsLeft--;
-        secondsLeft--;
+        secondsLeft-5;
+        // secondsLeft--;
+        // secondsLeft--;
+        // secondsLeft--;
+        // secondsLeft--;
         }
      
         
