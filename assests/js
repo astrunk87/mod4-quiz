@@ -1,19 +1,22 @@
 var timeEl = document.querySelector(".time");
 var mainEl = document.querySelector("main");
-var scoreEl = document.querySelector(".score");
+var pointsEl = document.querySelector(".points");
 var startGame = document.querySelector("#start");
 var question = document.querySelector("h2");
 var answer1 = document.querySelector("#answer1");
 var answer2 = document.querySelector("#answer2");
 var answer3 = document.querySelector("#answer3");
 var answer4 = document.querySelector("#answer4");
-var score = document.querySelector("#score");
+var scoreEl = document.querySelector("#score");
 var answerBox = document.querySelector("#answerBox");
-// var Highscore = localStorage.getItem("#highScore");
-
+var player = document.getElementById("msg");
+var saveButton = document.getElementById("save");
+var finalScore = document.getElementById("scoreSpot");
+var enterButton = document.getElementById("enter");
 
 var secondsLeft = 60;
-var score = 0;
+var startingScore = 0;
+
 
 
 
@@ -136,25 +139,48 @@ function timer (event) {
         // clearInterval(timerInterval);
         secondsLeft = 0;
         // showHighscore();
-        sendMessage();
-        
-       
-
-        
+        sendMessage();    
 
 
     } 
-    // function showHighscore(){
-    //     localStorage.setItem("highscore", JSON.stringify(Highscore));
-    // }
 
+//     function makeHighScore(){
+//     var highScore = {
+//         score:score.value,
+//         player:player.value,
+//     };
+//     localStorage.setItem('highScore', JSON.stringify(highScore));
+// }
+//     function showHighscore(){
+//         var lastScore = JSON.parse(localStorage.getItem('player'));
+//         document.getElementById('player').innerHTML = lastScore.player;
+    // }
+    function saveLastScore() {
+        var score = {
+            finalScore: finalScore.value,
+            player: player.value,
+        };
+        localStorage.setItem('score',JSON.stringify(score));
+    }
+    function showLastScore () {
+        var lastScore = JSON.parse(localStorage.getItem('score'));
+        if (lastScore !== null) {
+            document.getElementById('finalScore').innerHTML = lastScore.finalScore;
+            document.getElementById('player').innerHTML = lastScore.player;
+        }
+    }
+    saveButton.addEventListener('click', function (event) {
+        event.preventDefault();
+        saveLastScore();
+        showLastScore();
+      });
 
     function addPoints() {
-        scoreEl.textContent = score++;
-        scoreEl.textContent = score++;
-        scoreEl.textContent = score++;
-        scoreEl.textContent = score++;
-        scoreEl.textContent = score++;      
+        scoreEl.textContent = startingScore++;
+        scoreEl.textContent = startingScore++;
+        scoreEl.textContent = startingScore++;
+        scoreEl.textContent = startingScore++;
+        scoreEl.textContent = startingScore++;     
     }
     
 
