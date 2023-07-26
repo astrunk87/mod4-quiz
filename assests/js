@@ -3,10 +3,10 @@ var mainEl = document.querySelector("main");
 var pointsEl = document.querySelector(".points");
 var startGame = document.querySelector("#start");
 var question = document.querySelector("h2");
-var answer1 = document.querySelector("#answer1");
-var answer2 = document.querySelector("#answer2");
-var answer3 = document.querySelector("#answer3");
-var answer4 = document.querySelector("#answer4");
+// var answer1 = document.querySelector("#answer1");
+// var answer2 = document.querySelector("#answer2");
+// var answer3 = document.querySelector("#answer3");
+// var answer4 = document.querySelector("#answer4");
 var scoreEl = document.querySelector("#score");
 var answerBox = document.querySelector("#answerBox");
 var player = document.getElementById("msg");
@@ -18,36 +18,42 @@ var secondsLeft = 60;
 var startingScore = 0;
 
 // with help from prof
-const questions = {
+
+
+
+const questions = [
+    {
     question: "what anwer is a web api?",
     answers: ["Java Script", "Bootstrap", "CSS", "HTML"],
-    correctAnwser: 2
+    correctAnwser: 0
 },
 {
     question: "what does css stand for?",
     answers: ["creative sheet standard", "casscading standard style", "casscading style sheet", "color style sheet"],
-    correctAnswer: 3
+    correctAnswer: 0
 },
 {
     question: "what does js stand for?",
-    answers: ["Java Script", "joint style", "james script", "jelly scone"]
-    correctAnswer:1
+    answers: ["Java Script", "joint style", "james script", "jelly scone"],
+    correctAnswer: 0
 }
-
+];
 let currentQuestionNum = 0;
 const questionEl = document.querySelector("#question");
 const answersEl = document.querySelector("#answers");
 
-fucntion initQuestions() {
+
+function initQuestions() {
     const currentQuestion = questions[currentQuestionNum];
     questionEl.textContent = currentQuestion.question;
     answersEl.innerHTML = "";
-    for (var i=0; i < currentQuestion.answer.lenght; i++) { 
+    for (var i=0; i < currentQuestion.answers.length; i++) { 
         var li = document.createElement("li");
-        li.textContent = currentQuestion.answer[i];
+        li.textContent = currentQuestion.answers[i];
         answersEl.appendChild(li);
     }
 }
+
 
 
 
@@ -68,10 +74,10 @@ function timer (event) {
         }
     }, 1000)};
 
-fucntion handleAnswerQuestion(event) {
+function handleAnswerQuestion(evt) {
     const currentQuestion = questions[currentQuestionNum];
     const correctAnswer = currentQuestion.correctAnswer;
-    var target = event.target;
+    var target = evt.target;
     var index = target.getAttribute("data-index");
     if (index == correctAnswer) {
         answerBox.textContent = ("correct!! + 5 points!!");
@@ -87,7 +93,9 @@ fucntion handleAnswerQuestion(event) {
         initQuestions();
     }
 }
-
+function addEventListeners() {
+    answersEl.addEventListener("click", handleAnswerQuestion);
+}
     // question.textContent = "which answer is a web api?";
     // answer1.textContent = "java script";
     // answer2.textContent = "css";
@@ -209,13 +217,7 @@ fucntion handleAnswerQuestion(event) {
             document.getElementById('player').innerHTML = lastScore.player;
         }
     }
-    function init() {
-        showLastScore();
-      }
-      init();
-
-
-
+   
     saveButton.addEventListener('click', function (event) {
         event.preventDefault();
         saveLastScore();
@@ -240,16 +242,16 @@ fucntion handleAnswerQuestion(event) {
         // secondsLeft--;
         // secondsLeft--;
         }
-     
-        
-           
-    
-
-// }
 
 function sendMessage() {
     timeEl.textContent = "GAME OVER"
 }
+ function init() {
+        showLastScore();
+        addEventListeners();
+        // initQuestions();
+      }
+      init();
 
 
 // timer();
