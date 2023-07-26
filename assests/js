@@ -87,7 +87,7 @@ function handleAnswerQuestion(evt) {
         answerBox.textContent = "wrong -5 seconds";
     }
     currentQuestionNum++;
-    if (currentQuestionNum >= questions.lenght) {
+    if (currentQuestionNum >= questions.length) {
         endGame();
     } else {
         initQuestions();
