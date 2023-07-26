@@ -1,21 +1,19 @@
 var timeEl = document.querySelector(".time");
-var mainEl = document.querySelector("main");
+var mainEl = document.querySelector("#main");
 var pointsEl = document.querySelector(".points");
 var startGame = document.querySelector("#start");
-var question = document.querySelector("h2");
-// var answer1 = document.querySelector("#answer1");
-// var answer2 = document.querySelector("#answer2");
-// var answer3 = document.querySelector("#answer3");
-// var answer4 = document.querySelector("#answer4");
 var scoreEl = document.querySelector("#score");
 var answerBox = document.querySelector("#answerBox");
+// change to querySelector
 var player = document.getElementById("msg");
 var saveButton = document.getElementById("save");
 var finalScore = document.getElementById("scoreSpot");
-var enterButton = document.getElementById("enter");
+let currentQuestionNum = 0;
+const questionEl = document.querySelector("#question");
+const answersEl = document.querySelector("#answers");
 
-var secondsLeft = 60;
 var startingScore = 0;
+var secondsLeft = 60;
 
 // with help from prof
 
@@ -24,23 +22,22 @@ var startingScore = 0;
 const questions = [
     {
     question: "what anwer is a web api?",
-    answers: ["Java Script", "Bootstrap", "CSS", "HTML"],
-    correctAnwser: 0
+    answers: ["Java Script", "CSS", "Bootstrap",  "HTML"],
+    correctAnswer: 2
 },
 {
     question: "what does css stand for?",
     answers: ["creative sheet standard", "casscading standard style", "casscading style sheet", "color style sheet"],
-    correctAnswer: 0
+    correctAnswer: 2
 },
 {
     question: "what does js stand for?",
-    answers: ["Java Script", "joint style", "james script", "jelly scone"],
-    correctAnswer: 0
+    answers: [ "joint styles", "james script","Java Script", "jelly scone"],
+    correctAnswer: 2
 }
 ];
-let currentQuestionNum = 0;
-const questionEl = document.querySelector("#question");
-const answersEl = document.querySelector("#answers");
+
+
 
 
 function initQuestions() {
@@ -61,15 +58,14 @@ startGame.addEventListener("click", initQuestions);
 startGame.addEventListener("click", timer);
   
 
-function timer (event) {
+function timer () {
     var timerInterval = setInterval(function(){
         secondsLeft--;
         timeEl.textContent = secondsLeft + " tell game over";
                 
 
         if(secondsLeft <= 0) {
-            clearInterval(timerInterval);
-            
+            clearInterval(timerInterval);            
             sendMessage();
         }
     }, 1000)};
@@ -78,8 +74,8 @@ function handleAnswerQuestion(evt) {
     const currentQuestion = questions[currentQuestionNum];
     const correctAnswer = currentQuestion.correctAnswer;
     var target = evt.target;
-    var index = target.getAttribute("data-index");
-    if (index == correctAnswer) {
+    var idx = target.getAttribute("data-idx");
+    if (idx == correctAnswer) {
         answerBox.textContent = ("correct!! + 5 points!!");
         addPoints()
     } else {
@@ -96,101 +92,7 @@ function handleAnswerQuestion(evt) {
 function addEventListeners() {
     answersEl.addEventListener("click", handleAnswerQuestion);
 }
-    // question.textContent = "which answer is a web api?";
-    // answer1.textContent = "java script";
-    // answer2.textContent = "css";
-    // answer3.textContent = "bootstrap";
-    // answer4.textContent = "html";
-    
-    // answer4.addEventListener("click",function(){
-    //     if(secondsLeft > 0){
-    //     secondQuestion()
-    //     loseTime()
-    //     answerBox.textContent = "wrong -5 seconds";
-    //     }});
-    // answer1.addEventListener("click",function(){
-    //     if(secondsLeft > 0){
-    //     secondQuestion()
-    //     loseTime()
-    //     answerBox.textContent = "wrong -5 seconds";
-    //     }});
-    // answer2.addEventListener("click",function(){
-    //     if(secondsLeft > 0){
-    //     secondQuestion()
-    //     loseTime()
-    //     answerBox.textContent = "wrong -5 seconds";
-    //     }});
-
-    // answer3.addEventListener("click",function() {
-    //     if(secondsLeft > 0) {        
-    //     secondQuestion()        
-    //     answerBox.textContent = ("correct!! + 5 points!!");
-    //     addPoints()
-    //     }})};   
-
-    // function secondQuestion(){
-    //     question.textContent = " what does css stand for?";
-    //     answer1.textContent = " creative sheet standard";
-    //     answer2.textContent = " casscading standard style";
-    //     answer3.textContent = " casscading style sheet";        
-    //     answer4.textContent = " color style sheet";
-    //     answer1.addEventListener("click",function(){
-    //         if(secondsLeft > 0){            
-    //         loseTime()            
-    //         thirdQuestion()
-    //         answerBox.textContent = "wrong -5 seconds";
-    //         }});
-    //     answer2.addEventListener("click",function(){
-    //         if(secondsLeft > 0){
-    //         loseTime()  
-    //         thirdQuestion()   
-    //         answerBox.textContent = "wrong -5 seconds";       
-    //         }});
-    //     answer3.addEventListener("click",function(){
-    //         if(secondsLeft > 0){
-    //         thirdQuestion()
-    //         addPoints()
-    //         answerBox.textContent = ("correct!! + 5 points!!");
-    //         }});        
-    //     answer4.addEventListener("click",function(){
-    //         if(secondsLeft > 0){
-    //         loseTime()
-    //         thirdQuestion()
-    //         answerBox.textContent = "wrong -5 seconds";
-    //         }});   
-         
-    // }
-
-    // function thirdQuestion() {
-    //     question.textContent = "what does js stand for?";
-    //     answer3.textContent = " Java Script";
-    //     answer2.textContent = " joint style";
-    //     answer1.textContent = " james script";
-    //     answer4.textContent = " jelly scone";
-    //     answer3.addEventListener("click",function(){
-    //         if(secondsLeft > 0){
-    //         endGame();
-    //         addPoints();
-    //         answerBox.textContent = ("correct!! + 5 points!!");
-    //         }});
-    //     answer2.addEventListener("click",function(){
-    //         if(secondsLeft > 0){
-    //         answerBox.textContent = "wrong";
-    //         endGame()            
-    //         }}); 
-    //     answer1.addEventListener("click",function(){
-    //         if(secondsLeft > 0){
-    //         answerBox.textContent = "wrong";
-    //         endGame()
-    //         }});
-    //     answer4.addEventListener("click",function(){
-    //         if(secondsLeft > 0){
-    //         answerBox.textContent = "wrong";
-    //         endGame()
-    //         }});
-           
-
-    // }
+   
 
     function endGame(){
         if (secondsLeft > 0)
@@ -198,7 +100,6 @@ function addEventListeners() {
         secondsLeft = 0;
         // showHighscore();
         sendMessage();    
-
 
     } 
 
@@ -226,8 +127,7 @@ function addEventListeners() {
 
     function addPoints() {
         startingScore = startingScore +5;
-        scoreEl.textContent = startingScore;
-        console.log("test");
+        scoreEl.textContent = startingScore;       
         // scoreEl.textContent = startingScore++;
         // scoreEl.textContent = startingScore++;
         // scoreEl.textContent = startingScore++;
@@ -236,11 +136,12 @@ function addEventListeners() {
    
 
     function loseTime(){
-        secondsLeft-5;
-        // secondsLeft--;
-        // secondsLeft--;
-        // secondsLeft--;
-        // secondsLeft--;
+        console.log("test");
+        secondsLeft--;        
+        secondsLeft--;
+        secondsLeft--;
+        secondsLeft--;
+        secondsLeft--;
         }
 
 function sendMessage() {
@@ -249,9 +150,8 @@ function sendMessage() {
  function init() {
         showLastScore();
         addEventListeners();
-        // initQuestions();
+        
       }
       init();
 
 
-// timer();
