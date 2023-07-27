@@ -38,15 +38,15 @@ const questions = [
 ];
 
 
-
-
+// below with help from ta kimberly
 function initQuestions() {
     const currentQuestion = questions[currentQuestionNum];
     questionEl.textContent = currentQuestion.question;
     answersEl.innerHTML = "";
-    for (var i=0; i < currentQuestion.answers.length; i++) { 
+    for (var i = 0; i < currentQuestion.answers.length; i++) { 
         var li = document.createElement("li");
         li.textContent = currentQuestion.answers[i];
+        li.setAttribute("data-idx", i)
         answersEl.appendChild(li);
     }
 }
@@ -80,7 +80,7 @@ function handleAnswerQuestion(evt) {
         addPoints()
     } else {
         loseTime()
-        answerBox.textContent = "wrong -5 seconds";
+        answerBox.textContent = ("wrong -5 seconds");
     }
     currentQuestionNum++;
     if (currentQuestionNum >= questions.length) {
