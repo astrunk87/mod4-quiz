@@ -6,44 +6,35 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
 </head>
-<body> 
-    
-    <section>
+<body style="text-align:center;">     
+    <section style="text-align:center;">
         <h1>coding quiz</h1>
-        <div class="button"></div>
-         <button id="start">start game</button>
-        <h2 id="question">question</h2>
-        <h2 id="answers">answers</h2>
+        <div class="button" style="text-align:center;"></div>
+        <button id="start">start game</button>
+        <section>
+            <h3 id="answerBox">wrong answer will -5 seconds, right answer will + 5 points</h3>
+        </section>
+        <h2 id="question" ></h2>
+        <h2 id="answers"></h2>
     </section>
-    <h1 class="time" style="text-align:center;"></h1>
+    <h1 class="time"></h1>
     <div id="main"></div>
 
-    <section>
-        <!-- <h1>answer</h1> -->
-        <h3 id="answerBox">wrong answer will -5 seconds, right answer will + 5 points</h3>
-    </section>
     <div>
     <h1 class="scoreBoard">score</h1>
     <h2 class="points"></h2>
     <h2 id="score">0</h2>
-    <textarea id="scoreSpot" name="comments"></textarea>
-    
-    
+    <textarea id="scoreSpot" name="comments">final score</textarea>   
     </div>
 
     <div>
-        <h1> player </h1>
-        <textarea id="msg" name="comments"></textarea>
-        <button id="save">SAVE</button>
+        <h1>enter name below</h1>
+        <textarea id="msg" name="comments"></textarea><br>
+        <button id="save">save your score!!</button>
         <h3>last score: <span id="finalScore"></span></h3>
         <h3>last player: <span id="player"></span></h3>
-    </div>
-
-
-    
-    
+    </div>  
          
-
     <script src="./assests/js"></script>
 </body>
 </html>

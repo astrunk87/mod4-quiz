@@ -4,26 +4,21 @@ var pointsEl = document.querySelector(".points");
 var startGame = document.querySelector("#start");
 var scoreEl = document.querySelector("#score");
 var answerBox = document.querySelector("#answerBox");
-// change to querySelector
-var player = document.getElementById("msg");
-var saveButton = document.getElementById("save");
-var finalScore = document.getElementById("scoreSpot");
-let currentQuestionNum = 0;
+var player = document.querySelector("#msg");
+var saveButton = document.querySelector("#save");
+var finalScore = document.querySelector("#scoreSpot");
 const questionEl = document.querySelector("#question");
 const answersEl = document.querySelector("#answers");
-
+let currentQuestionNum = 0;
 var startingScore = 0;
 var secondsLeft = 60;
 
 // with help from prof
-
-
-
 const questions = [
     {
     question: "what anwer is a web api?",
-    answers: ["Java Script", "CSS", "Bootstrap",  "HTML"],
-    correctAnswer: 2
+    answers: ["Java Script","Bootstrap", "CSS", "HTML"],
+    correctAnswer: 1
 },
 {
     question: "what does css stand for?",
@@ -32,8 +27,8 @@ const questions = [
 },
 {
     question: "what does js stand for?",
-    answers: [ "joint styles", "james script","Java Script", "jelly scone"],
-    correctAnswer: 2
+    answers: ["Java Script", "joint styles", "james script", "jelly scone"],
+    correctAnswer: 0
 }
 ];
 
@@ -52,8 +47,6 @@ function initQuestions() {
 }
 
 
-
-
 startGame.addEventListener("click", initQuestions);
 startGame.addEventListener("click", timer);
   
@@ -61,9 +54,7 @@ startGame.addEventListener("click", timer);
 function timer () {
     var timerInterval = setInterval(function(){
         secondsLeft--;
-        timeEl.textContent = secondsLeft + " tell game over";
-                
-
+        timeEl.textContent = secondsLeft + " tell game over";              
         if(secondsLeft <= 0) {
             clearInterval(timerInterval);            
             sendMessage();
@@ -92,15 +83,11 @@ function handleAnswerQuestion(evt) {
 function addEventListeners() {
     answersEl.addEventListener("click", handleAnswerQuestion);
 }
-   
-
-    function endGame(){
-        if (secondsLeft > 0)
-        // clearInterval(timerInterval);
-        secondsLeft = 0;
-        // showHighscore();
-        sendMessage();    
-
+function endGame(){
+    if (secondsLeft > 0)
+    secondsLeft = 0;
+    sendMessage(); 
+    scoreSpot.textContent = startingScore;   
     } 
 
 
@@ -128,15 +115,11 @@ function addEventListeners() {
     function addPoints() {
         startingScore = startingScore +5;
         scoreEl.textContent = startingScore;       
-        // scoreEl.textContent = startingScore++;
-        // scoreEl.textContent = startingScore++;
-        // scoreEl.textContent = startingScore++;
-        // scoreEl.textContent = startingScore++;     
+         
     }
    
 
     function loseTime(){
-        console.log("test");
         secondsLeft--;        
         secondsLeft--;
         secondsLeft--;
