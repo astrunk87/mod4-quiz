@@ -7,7 +7,9 @@ This project was built to help futher my understanding of java script and coding
 
 to use this quiz click on the start game button and answer the questions that follow by clicking on the answers.
 once you have finished the quiz your final score will but put into the box below score. Then enter your name where it asks you to and hit save to save your score.
-[alt text](assets/images.png)
+below is a screenshot of the quiz at the start of it.
+[alt text](assets/image.png)
+![astrunk87 github io_mod4-quiz_](https://github.com/astrunk87/mod4-quiz/assets/134554632/57a57e7f-ebc4-4591-bf69-4fd506a53dc7)
 
 ## Credits
 
